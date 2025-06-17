@@ -10,6 +10,9 @@ while True:
     try:
         opcion = int(input("ingrese la opcion:\n"))
         if opcion == 1:
+            nombre = input("Ingrese el nombre del contacto: ")
+            telefono = input("Ingrese el teléfono del contacto: ")
+            email = input("Ingrese el email del contacto: ")
             print("agregar contactos")
         elif opcion == 2:
             print("Listar contactos: ")
