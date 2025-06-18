@@ -1,26 +1,37 @@
 import os 
 from function import * 
 
-while True:
-    print("1.	Agregar un contacto: nombre, teléfono, email.")
-    print("2.	Listar contactos: mostrar todos los contactos guardados.")
-    print("3.	Buscar un contacto por nombre.")
-    print("4.	Eliminar un contacto.")
-    print("5.	Salir del programa.")
-    try:
-        opcion = int(input("ingrese la opcion:\n"))
-        if opcion == 1:
-            nombre = input("Ingrese el nombre del contacto: ")
-            telefono = input("Ingrese el teléfono del contacto: ")
-            email = input("Ingrese el email del contacto: ")
-            print("agregar contactos")
-        elif opcion == 2:
-            print("Listar contactos: ")
-        elif opcion == 3:
-            print("	Buscar un contacto por nombre")
-        elif opcion == 4:
-            print("Eliminar un contacto")
-        elif opcion == 5:
-            print("salir de progama")
-    except:
-        print("ingrese caracteres")
+
+
+
+
+
+def menu():
+    while True:
+        print("=== Mini Agenda de Contactos ===")
+        print("1. Agregar contacto")
+        print("2. Mostrar contactos")
+        print("3. Buscar contacto")
+        print("4. Eliminar contacto")
+        print("5. Salir")
+        
+        try:
+            opcion = int(input("Seleccione una opción: \n"))
+            
+            if opcion == 1:
+                agregar_contacto()
+            elif opcion == 2:
+                mostrar_contactos()
+            elif opcion == 3:
+                buscar_contacto()
+            elif opcion == 4:
+                eliminar_contacto()
+            elif opcion == 5:
+                print("Saliendo del programa.")
+                break
+            else:
+                print("Opción inválida. Intente nuevamente.\n")
+        except:
+            print("Debe ingresar un número válido.\n")
+
+menu()
