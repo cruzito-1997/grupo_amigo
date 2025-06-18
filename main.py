@@ -1,26 +1,65 @@
 import os 
 from function import * 
 
-while True:
-    print("1.	Agregar un contacto: nombre, teléfono, email.")
-    print("2.	Listar contactos: mostrar todos los contactos guardados.")
-    print("3.	Buscar un contacto por nombre.")
-    print("4.	Eliminar un contacto.")
-    print("5.	Salir del programa.")
+os.system("cls")
+
+
+# Lista global para almacenar los contactos
+contactos = []
+
+# Función para agregar un contacto
+def agregar_contacto():
     try:
-        opcion = int(input("ingrese la opcion:\n"))
-        if opcion == 1:
-            nombre = input("Ingrese el nombre del contacto: ")
-            telefono = input("Ingrese el teléfono del contacto: ")
-            email = input("Ingrese el email del contacto: ")
-            print("agregar contactos")
-        elif opcion == 2:
-            print("Listar contactos: ")
-        elif opcion == 3:
-            print("	Buscar un contacto por nombre")
-        elif opcion == 4:
-            print("Eliminar un contacto")
-        elif opcion == 5:
-            print("salir de progama")
+        nombre = input("Ingrese el nombre del contacto: ")
+        telefono = input("Ingrese el teléfono del contacto: ")
+        email = input("Ingrese el email del contacto: ")
+        # Cada contacto es una lista [nombre, telefono, email]
+        contacto = [nombre, telefono, email]
+        contactos.append(contacto)
+        print("Contacto agregado correctamente.\n")
     except:
-        print("ingrese caracteres")
+        print(f"Error al agregar contacto:")
+
+# Función para mostrar todos los contactos
+def mostrar_contactos():
+    try:
+        if len(contactos) == 0:
+            print("No hay contactos registrados.\n")
+        else:
+            print("Lista de contactos:")
+            for i, contacto in enumerate(contactos, 1):
+                print(f"{i}. Nombre: {contacto[0]}, Teléfono: {contacto[1]}, Email: {contacto[2]}")
+            print()
+    except:
+        print(f"Error al mostrar contactos:")
+
+# Función para buscar un contacto por nombre
+def buscar_contacto():
+    try:
+        nombre_buscar = input("Ingrese el nombre a buscar: ")
+        encontrado = False
+        for contacto in contactos:
+            if contacto[0].lower() == nombre_buscar.lower():
+                print(f"Contacto encontrado: Nombre: {contacto[0]}, Teléfono: {contacto[1]}, Email: {contacto[2]}\n")
+                encontrado = True
+                break
+        if not encontrado:
+            print("Contacto no encontrado.\n")
+    except:
+        print(f"Error al buscar contacto:")
+
+# Función para eliminar un contacto por nombre
+def eliminar_contacto():
+    try:
+        nombre_eliminar = input("Ingrese el nombre del contacto a eliminar: ")
+        eliminado = False
+        for contacto in contactos:
+            if contacto[0].lower() == nombre_eliminar.lower():
+                contactos.remove(contacto)
+                print("Contacto eliminado correctamente.\n")
+                eliminado = True
+                break
+        if not eliminado:
+            print("Contacto no encontrado, no se pudo eliminar.\n")
+    except:
+        print(f"Error al eliminar contacto:")
